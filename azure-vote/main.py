@@ -24,20 +24,20 @@ from opencensus.trace.samplers import ProbabilitySampler
 # Logging
 logger = logging.getLogger(__name__)
 logger.addHandler(AzureLogHandler(
-    connection_string='InstrumentationKey=1ba5bfee-1c32-40b8-b875-b27a04151e00;IngestionEndpoint=https://westus2-1.in.applicationinsights.azure.com/')
+    connection_string='InstrumentationKey=08eefca4-3d9f-4d05-af14-a16d14cd0186;IngestionEndpoint=https://westus2-1.in.applicationinsights.azure.com/')
 )
 logger.setLevel(logging.INFO)
 
 # Metrics
 exporter = metrics_exporter.new_metrics_exporter(
   enable_standard_metrics=True,
-  connection_string='InstrumentationKey=1ba5bfee-1c32-40b8-b875-b27a04151e00;IngestionEndpoint=https://westus2-1.in.applicationinsights.azure.com/')
+  connection_string='InstrumentationKey=08eefca4-3d9f-4d05-af14-a16d14cd0186;IngestionEndpoint=https://westus2-1.in.applicationinsights.azure.com/')
 
 
 # Tracing
 tracer = Tracer(
     exporter=AzureExporter(
-        connection_string='InstrumentationKey=1ba5bfee-1c32-40b8-b875-b27a04151e00;IngestionEndpoint=https://westus2-1.in.applicationinsights.azure.com/'),
+        connection_string='InstrumentationKey=08eefca4-3d9f-4d05-af14-a16d14cd0186;IngestionEndpoint=https://westus2-1.in.applicationinsights.azure.com/'),
     sampler=ProbabilitySampler(1.0),
 )
 
@@ -46,7 +46,7 @@ app = Flask(__name__)
 # Requests
 middleware = FlaskMiddleware(
     app,
-    exporter=AzureExporter(connection_string="InstrumentationKey=1ba5bfee-1c32-40b8-b875-b27a04151e00;IngestionEndpoint=https://westus2-1.in.applicationinsights.azure.com/"),
+    exporter=AzureExporter(connection_string="InstrumentationKey=08eefca4-3d9f-4d05-af14-a16d14cd0186;IngestionEndpoint=https://westus2-1.in.applicationinsights.azure.com/"),
     sampler=ProbabilitySampler(rate=1.0),
 )
 
